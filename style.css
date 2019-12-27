@@ -25,6 +25,10 @@ header {
 	
 }
 
+#mainid {
+	text-align: center;
+	color: white;
+}
 .sidenav {
   height: 100%;
   width: 0;

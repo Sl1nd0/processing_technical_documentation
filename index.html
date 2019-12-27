@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html >
+
+	<head>
+		<title> Technical Documentation </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+	<script>
+	
+	var marLeft = 0;
+	var marRight = 0;
+	var padding = 0;
+	
+	function mainFunc() {
+	
+		var elem = document.getElementById('main-doc');
+		var marLeft = getStyle(elem, 'margin-left');
+		var marRight = getStyle(elem, 'margin-right');
+		var padding = getStyle(elem, 'padding-top');
+		//alert('Loading ' + marLeft);
+	}
+	
+	function openNav() {
+			
+	let val = "";
+	//	alert(marRight + '  ' + padding + '   ' + marLeft);
+	
+		x1 = document.getElementById('main-doc');
+		
+		marLeft = getStyle(x1, 'margin-left');
+		marRight = getStyle(x1, 'margin-right');
+		
+		if (window.outerWidth < 600) {
+		  document.getElementById("mymain").style.paddingTop = "90%";
+		  //document.getElementById("navbar").style.width = "100%";
+		  	if (window.outerHeight >= 820) {
+				document.getElementById("main-doc").style.paddingTop = "100%";
+			} else if (window.outerHeight >= 812 && window.outerHeight <= 820) {
+				document.getElementById("main-doc").style.paddingTop = "110%";
+			} else if (window.outerHeight >= 540 && window.outerHeight <= 600) {
+				document.getElementById("main-doc").style.paddingTop = "100%";
+			}
+		  val = "100%";
+		} else if (window.outerWidth >= 600 && window.outerWidth <= 768) {
+		
+			document.getElementById("main-doc").style.marginLeft = "35%";
+			document.getElementById("main-doc").style.marginRight ="10%";
+			//document.getElementById("main-doc").style.paddingTop = "90%";
+		  //document.getElementById("navbar").style.width = "100%";
+					
+		  val = "250px";
+		} else if (window.outerWidth > 768 && window.outerWidth <= 1024) {
+		
+			document.getElementById("main-doc").style.marginLeft = "25%";
+			document.getElementById("main-doc").style.marginRight ="10%";
+			//document.getElementById("mymain").style.paddingTop = "90%";
+		  //document.getElementById("navbar").style.width = "100%";
+	
+		  val = "240px";
+		} else {
+		
+			//For larger screens
+			document.getElementById("main-doc").style.marginLeft = "20%";
+			document.getElementById("main-doc").style.marginRight ="20%";
+			
+			val = "250px";
+		 }
+		 
+	 	  document.getElementById("navbar").style.width = val;
+	}
+
+	function closeNav() {
+		
+		//alert(marLeft);
+	 let vLeft = (parseInt(marLeft .replace(/px/,""))/4)+"px";
+	 let vRight = (parseInt(marRight .replace(/px/,""))/4)+"px";
+	 
+	 //alert(vLeft);
+	 document.getElementById("main-doc").style.marginLeft = vLeft;
+	 document.getElementById("main-doc").style.marginRight = vRight;
+	 document.getElementById("main-doc").style.paddingTop = padding;
+	 
+	 document.getElementById("navbar").style.width = "0%";
+	}
+	
+	//Values for my elements
+	var getStyle = function (e, styleName) {
+		var styleValue = "";
+		if(document.defaultView && document.defaultView.getComputedStyle) {
+			styleValue = document.defaultView.getComputedStyle(e, "").getPropertyValue(styleName);
+		}
+		else if(e.currentStyle) {
+			styleName = styleName.replace(/\-(\w)/g, function (strMatch, p1) {
+				return p1.toUpperCase();
+			});
+			styleValue = e.currentStyle[styleName];
+		}
+		return styleValue;
+	}
+	//Values for my elements
+	
+	</script>
+
+	</head>
+	
+	<header id="header">
+	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Processing.js</span>
+  </header>
+  <nav id="navbar" class="sidenav">
+		<header>  </header>
+	  <ul> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <a class="nav-link" href="#Introduction">Introduction</a>
+	  <a class="nav-link"  href="#Hello_world">Hello world</a>
+	  <a class="nav-link"  href="#Data_types">Data types </a>
+	  <a class="nav-link"  href="#Variables">Variables </a>
+	  <a class="nav-link"  href="#Your_First_sketch"> Your first sketch </a>
+	  <a class="nav-link"  href="#If_statement"> If statement </a> </ul>
+	  
+	</nav>
+	
+	<body onload="mainFunc()">
+		
+	</body>
+		
+	<main id="main-doc">
+	
+	<section class="main-section" id="Introduction">
+		   <header>Introduction</header>
+    <article>
+      <p>
+	  The Processing language was originally created at MIT as part of the Media lab and Aesthetics and Computation group.
+	  They needed a way to bridge the gap between software developers, artists, data visualizers, etc., 
+	  and to do so in a way that allowed new programmers (or non-programmers) to do complex visual work easily. 
+	  Processing was built using Java, and can be thought of as a simplified Java, with a simplified Java API for drawing and graphics.</p>
+	  
+		<p>Processing.js is the sister project of the popular Processing visual programming language, designed for the web. Processing.js makes your data visualizations, digital art, interactive animations, educational graphs, video games, etc. work using web standards and without any plug-ins. You write code using the Processing language, include it in your web page, and Processing.js does the rest. It's not magic, but almost.
+		Originally developed by Ben Fry and Casey Reas, Processing started as an open source programming language based on Java to help the electronic arts and visual design communities learn the basics of computer programming in a visual context. Processing.js takes this to the next level, allowing Processing code to be run by any HTML5 compatible browser, including current versions of Firefox, Safari, Chrome, Opera, and Internet Explorer. Processing.js brings the best of visual programming to the web, both for Processing and web developers.
+		Everything you need to work with Processing.js is <a href="http://processingjs.org/learning/"> here </a>.
+
+	  </p>
+	 </article>
+	 </section>
+	 
+	 <section class="main-section"  id="Hello_world">
+	 	   <header>Hello world</header>
+    <article>
+      <p>
+	   text() function to display text.
+		This function is just like shape or image drawing, it takes three arguments—the text to be displayed, 
+		and the x and y coordinate to display that text. <br><br> 
+		text("Hello Strings!",10,100); <br><br>
+		Here are all the steps together: <br><br>
+		
+		<code>
+		    PFont f;                           // STEP 1 Declare PFont variable<br><br>
+			  
+			void setup() {<br>
+			  size(200,200);<br>
+			  f = createFont("Arial",16,true); // STEP 2 Create Font<br>
+			}<br><br>
+
+			void draw() {<br>
+			  background(255);<br>
+			  textFont(f,16);                  // STEP 3 Specify font to be used<br>
+			  fill(0);                         // STEP 4 Specify font color <br>
+			  text("Hello world!",10,100);   // STEP 5 Display Text<br>
+			}<br>
+		</code>
+	  </p>
+	 </article>
+	 </section>
+	 
+	 <section class="main-section" id="Data_types">
+		   <header>Data types</header>
+    <article>
+      <p>
+	 Data types Processing can store and modify many different kinds of data,
+	 including numbers, letters, words, colors, images, fonts, and boolean values (true, false). 
+	 The computer stores each in a different way, so it has to know which type of data is being used to know how to manage it. 
+	 For example, storing a word takes more room than storing one letter, therefore storing the word Cincinnati 
+	 requires more space than storing the letter C. If space has been allocated for only one letter, trying to 
+	 store a word in the same space will cause an error. Every data element is represented as sequences of bits
+	 (0s and 1s) in the computer’s memory (more information about bits is found in Appendix D, p. 669). For example, 01000001 can be interpreted 
+	 as the letter A, and it can also be interpreted as the number 41. It’s necessary to specify the type of data so the computer knows how to correctly 
+	 interpret the bits. Numeric data is the ﬁrst type of data encountered in the following sections of this book. There are two types of numeric data used
+	 in Processing: integer and ﬂoatingpoint. Integers are whole numbers such as 12, -120, 8, and 934. Processing represents integer data with the int data type.
+	 Floating-point numbers have a decimal point for creating fractions of whole numbers such as 12.8, -120.75, 8.125, and 934.82736. Processing represents 
+	 ﬂoating-point data with the float data type. 
+	 Floating-point numbers are often used to approximate analog or continuous values because they have decimal 
+		
+	  </p>
+	  <p>
+	  resolution. For example, using integer values, there is only one number between 3
+	  and 5, but ﬂoating-point numbers allow us to express myriad numbers between such as 4.0, 4.5, 4.75, 4.825, etc. Both int and 
+	  ﬂoat values may be positive, negative, or zero. The simplest data element in Processing is a boolean variable. Variables of this 
+	  type can have only one of two values—true or false. The name boolean refers to the mathematician George Boole (b. 1815), the inventor
+	  of Boolean algebra—the foundation for how digital computers work. A boolean variable is often used to make decisions decisions about 
+	  which lines of code are run and which are ignored. The follow table compares the capacities of the  data types mentioned above with 
+	  other common data types:
+
+	<p> <ul> <b> Name </b> &nbsp;&nbsp;&nbsp;&nbsp; <b> Size </b> &nbsp;&nbsp;&nbsp;&nbsp; <b> Value rang </b> <br>
+	
+	<li>boolean&nbsp;&nbsp;&nbsp;&nbsp; 1 bit&nbsp;&nbsp;&nbsp;&nbsp; true or false </li>
+	<li> byte &nbsp;&nbsp;&nbsp;&nbsp; 8 bits &nbsp;&nbsp;&nbsp;&nbsp; -128 to 127 <li>
+	<li> char &nbsp;&nbsp;&nbsp;&nbsp; 16 bits &nbsp;&nbsp;&nbsp;&nbsp; 0 to 65535 </li>
+	<li> int &nbsp;&nbsp;&nbsp;&nbsp; 32 bits &nbsp;&nbsp;&nbsp;&nbsp; -2,147,483,648 to 2,147,483,647 </li>
+	<li> float &nbsp;&nbsp;&nbsp;&nbsp; 32 bits &nbsp;&nbsp;&nbsp;&nbsp; 3.40282347E+38 to -3.40282347E+38 <li>
+	<li> color &nbsp;&nbsp;&nbsp;&nbsp; 32 bits &nbsp;&nbsp;&nbsp;&nbsp; 16,777,216 colors </li>
+	</ul>
+	
+	</p>
+	
+	<p>
+	Additional types of data are introduced and explained in Data 2 (p. 101), Data 3 (p. 105), Image 1 (p. 95), Typography 1 (p. 111), and Structure 4 (p. 395).
+	</p>
+</p>
+	 </article>
+	 </section>
+	 
+	  <section class="main-section" id="Variables">
+		   <header>Variables</header>
+    <article>
+      <p>
+			A variable is a container for storing data. Variables allow a data element to be reused many times within a program. Every variable has two parts, a name and a value. If the number 21 is stored in the variable called age, every time the word age appears in the program, it will be replaced with the value 21 when the code is run. In addition to its name and value, every variable has a data type that deﬁnes the category of data it can hold. A variable must be declared before it is used. A variable declaration states the data type and variable name. The following lines declare variables and then assign values to the variables:
+			
+	  </p>
+	   
+	  <p> <code> int x; // Declare the variable x of type int <br>
+	  float y; // Declare the variable f of type float <br>
+	  boolean b; // Declare the variable b of type <br>
+	  boolean x = 50; // Assign the value 50 to x <br>
+	  y = 12.6; // Assign the value 12.6 to f <br>
+	  b = true; // Assign the value true to b <br> </code>
+	  </p>
+	  
+		 <br>As a shortcut, a variable can be declared and assigned on the same line: <br>
+		<code> int x = 50; <br>float y = 12.6; <br>  boolean b = true; <br>
+		More than one variable can be declared in one line, and the variables can then be assigned separately:
+		float x, y, z; <br>x = -3.9; <br>y = 10.1; <br>z = 124.23; <br>
+		<p> When a variable is declared, it is necessary to state the data type before its name; but after it’s declared, the data type cannot be changed or restated. If the data type is included again for the same variable, the computer will interpret this as an attempt to make a new variable with the same name, and this will cause an error (an exception to this rule is made when each variable has a different scope, p. 178): </p>
+		int x = 69; // Assign 69 to x <br> x = 70; // Assign 70 to x <br> int x = 71; // ERROR! The data type for x is duplicated <br>
+		<p> The= symbol is called the assignment operator. It assigns the value from the right side of the = to the variable on its left. Values can be assigned only to variables. Trying to assign a constant to another constant produces an error: </p><br>
+		// Error! The left side of an assignment must be a variable 5 = 12; <br>
+		<p>When working with variables of different types in the same program, be careful not to mix types in a way that causes an error. For example, it’s not possible to ﬁt a ﬂoatingpoint number into an integer variable: <br>
+		// Error! It’s not possible to fit a floating-point number into an int <br>
+		int x = 24.8; </code> <br><br></p>
+
+	  
+	  </article>
+	</section>
+	
+	<section class="main-section" id="Your_First_sketch">
+		   <header>Your First Sketch</header>
+    <article>
+	<p> Your first basic sketch to familiarise yourself with processing. <br><br> 
+		This is a sketch to draw an ellipse.
+	</p>
+      <p>
+		  <code>
+		void setup() { <br>
+		  size(400, 400);  <br>
+		  smooth(); <br>
+		  noStroke(); <br>
+		} <br><br>
+
+		void draw() <br>
+		{ 
+		   ellipse(56, 46, 55, 55);  <br>
+		} <br><br>
+		  </code>
+	  </p>
+	  </article>
+	  </section>
+	  
+	  <section class="main-section" id="If_statement">
+		   <header>If statement </header>
+    <article>
+	  
+	  <p> Conditionals allow a program to make decisions about which lines of code run and which do not. 
+	  They let actions take place only when a speciﬁc condition is met. 
+	  Conditionals allow a program to behave differently depending on the values of their variables.
+	  For example, the program may draw a line or an ellipse depending on the value of a variable. The if structure is used in Processing to make these decisions: </p> 
+ 
+	 <code>if (test) <br>
+	 {   statements<br>
+	 } <br> <br>
+	 </code>
+ 
+<p> 
+ The test must be an expression that resolves to true or false. When the test expression evaluates to true, 
+ the code inside the { (left brace) and } (right brace) is run. If the expression is false, the code is ignored. 
+ Code inside a set of braces is called a block. The following three examples present the same code with different values for the x variable.
+ Because this variable is used in the test for the if structure, changing it affects which lines of code are run. 
+ Changing the value causes an ellipse, rectangle, or neither to draw to the display window.
+  </p>
+  
+  <p>// The text expressions are "x > 100" and "x < 100" <br>
+  // Because x is 150, the code inside the first block <br>
+  // runs and the ellipse draws, but the code in the second  <br>
+  // block is not run and the rectangle is not drawn <br> <br>
+	<code>
+  int x = 150;  <br>
+  if (x > 100) { // If x is greater than 100, <br> 
+  ellipse(50, 50, 36, 36); // draw this ellipse  <br>
+  }  <br><br>
+  if (x < 100) { // If x is less than 100 <br>   
+  
+ rect(35, 35, 30, 30); // draw this rectangle  <br>
+ }  <br>
+ line(20, 20, 80, 80); <br>
+  // Because x is 50, only the rectangle draws <br>
+  int x = 50;  <br><br>
+  if (x > 100) { // If x is greater than 100,   <br>
+  ellipse(50, 50, 36, 36); // draw this ellipse <br>
+  }  if (x < 100) { // If x is less than 100, <br>
+  rect(33, 33, 34, 34); // draw this rectangle  <br>
+  }  <br>
+  line(20, 20, 80, 80); <br>
+  </code>
+	</p>
+  </article>
+  </section>
+	  
+	</main>
+
+</html>
